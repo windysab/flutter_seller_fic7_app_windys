@@ -1,7 +1,12 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_seller_fic7_app_windys/data/datasources/firebase_messaging_remote_datasource.dart';
+import 'package:flutter_seller_fic7_app_windys/firebase_options.dart';
 
 
+import 'bloc/add_image/add_image_bloc.dart';
+import 'bloc/add_product/add_product_bloc.dart';
 import 'bloc/categories/categories_bloc.dart';
 import 'bloc/login/login_bloc.dart';
 import 'bloc/logout/logout_bloc.dart';
@@ -12,7 +17,12 @@ import 'pages/auth/auth_page.dart';
 import 'pages/dashboard/seller_dashboard_page.dart';
 import 'utils/light_themes.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(
+  options: DefaultFirebaseOptions.currentPlatform,
+);
+await FirebaseMessagingRemoteDatasource().initNotification();
   runApp(const MyApp());
 }
 
@@ -53,6 +63,12 @@ class MyApp extends StatelessWidget {
         ),
         BlocProvider(
           create: (context) => CategoriesBloc(),
+        ),
+        BlocProvider(
+          create: (context) => AddImageBloc(),
+        ),
+        BlocProvider(
+          create: (context) => AddProductBloc(),
         ),
       ],
       child: MaterialApp(

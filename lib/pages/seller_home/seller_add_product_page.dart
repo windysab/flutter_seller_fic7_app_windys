@@ -1,8 +1,5 @@
-import 'dart:io';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-
 import 'package:image_picker/image_picker.dart';
 
 import '../../bloc/add_image/add_image_bloc.dart';
@@ -11,13 +8,12 @@ import '../../bloc/categories/categories_bloc.dart';
 import '../../common/global_variables.dart';
 import '../../data/models/categories_response_model.dart';
 import '../../data/models/request/product_request_model.dart';
-import '../../pages/base_widgets/custom_app_bar.dart';
-
 import '../../utils/color_resources.dart';
 import '../../utils/custom_themes.dart';
 import '../../utils/dimensions.dart';
+import '../base_widgets/custom_app_bar.dart';
 import '../dashboard/seller_dashboard_page.dart';
-import 'widgets/custom_text_feild.dart';
+import '../seller_product/widgets/custom_text_feild.dart';
 
 class SellerAddProductPage extends StatefulWidget {
   const SellerAddProductPage({super.key});
@@ -282,22 +278,6 @@ class _SellerAddProductPageState extends State<SellerAddProductPage> {
                           },
                           isExpanded: true,
                           underline: const SizedBox(),
-
-                          // isExpanded: true,
-                          // underline: const SizedBox(),
-                          // value: selectCategory,
-                          // onChanged: (Category? newValue) {
-                          //   setState(() {
-                          //     selectCategory = newValue;
-                          //   });
-                          // },
-                          // items: data.data.map<DropdownMenuItem<Category>>(
-                          //     (Category value) {
-                          //   return DropdownMenuItem<Category>(
-                          //     value: value,
-                          //     child: Text(value.name),
-                          //   );
-                          // }).toList(),
                         ),
                       );
                     },
